@@ -4,6 +4,32 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.65;
+    background-color: black;
+    color: white;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+main {
+    width: 90%;
+    flex-grow: 1;
+}
+
+footer {
+    width: 90%;
+}
+
 a {
     text-decoration: none;
     color: inherit;
