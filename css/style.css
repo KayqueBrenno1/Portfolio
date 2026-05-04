@@ -1,38 +1,9 @@
-@import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600|Roboto+Slab:400,700");
-
-/* ================= BASE ================= */
-p {
-    margin: 0 0 2em 0;
-}
-
-h1,
-h2,
-h3 {
-    color: var(--dark);
-    font-family: "Roboto Slab", serif;
-    font-weight: 700;
-    margin: 0 0 1em 0;
-}
-
-h1 {
-    font-size: 3.5rem;
-}
-
-h2 {
-    font-size: 1.75rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-}
-
 /* ================= HEADER ================= */
 #header {
     display: flex;
+    justify-content: space-between;
     border-bottom: 5px solid var(--primary);
     padding: 4em 0 1em;
-    gap: 5px;
 }
 
 .linha {
@@ -54,13 +25,1115 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 4rem;
+    min-height: 70vh;
+}
+
+.sobre {
+    width: 65%;
 }
 
 .inf-sobre {
-    width: 70%;
+    width: 75%;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
 }
 
 .foto img {
-    width: 250px;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
     border-radius: 50%;
+}
+
+/* =====================================================
+   VARIÁVEIS — TEMA ESCURO (padrão)
+   ===================================================== */
+body,
+body.dark-theme {
+    --bg: #0a0a0a;
+    --bg-2: #111111;
+    --bg-card: #161616;
+    --bg-card-hover: #1e1e1e;
+    --border: #2a2a2a;
+    --border-hover: #881FB5;
+    --text: #f0f0f0;
+    --text-muted: #888888;
+    --text-subtle: #555555;
+    --primary: #881FB5;
+    --primary-light: #a94fd1;
+    --primary-glow: rgba(136, 31, 181, 0.15);
+    --label-bg: rgba(136, 31, 181, 0.12);
+    --label-color: #c06de0;
+    --tag-bg: rgba(136, 31, 181, 0.10);
+    --tag-color: #c06de0;
+    --toggle-bg: #1e1e1e;
+    --toggle-color: #f0f0f0;
+    --bar-bg: #2a2a2a;
+
+    background-color: var(--bg);
+    color: var(--text);
+
+    /* Transição suave entre temas */
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease;
+}
+
+
+/* =====================================================
+      VARIÁVEIS — TEMA CLARO
+      ===================================================== */
+body.light-theme {
+    --bg: #fafafa;
+    --bg-2: #f0f0f0;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8f0fc;
+    --border: #e0e0e0;
+    --border-hover: #881FB5;
+    --text: #111111;
+    --text-muted: #555555;
+    --text-subtle: #aaaaaa;
+    --primary: #881FB5;
+    --primary-light: #6a1490;
+    --primary-glow: rgba(136, 31, 181, 0.08);
+    --label-bg: rgba(136, 31, 181, 0.08);
+    --label-color: #881FB5;
+    --tag-bg: rgba(136, 31, 181, 0.08);
+    --tag-color: #6a1490;
+    --toggle-bg: #e8e8e8;
+    --toggle-color: #111111;
+    --bar-bg: #e0e0e0;
+
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Garante que todos os elementos herdem a transição de tema */
+body *,
+body.light-theme * {
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Header responde ao tema */
+#header {
+    border-bottom-color: var(--primary);
+}
+
+/* Logo */
+.logo {
+    color: var(--text);
+}
+
+/* Linha roxa já é fixa, mantém */
+.linha {
+    border-bottom-color: var(--primary);
+}
+
+/* Título H1 do hero */
+.hero h1 {
+    color: var(--text);
+    font-family: "Roboto Slab", serif;
+}
+
+/* Parágrafo do hero */
+.inf-sobre {
+    color: var(--text-muted);
+}
+
+
+/* =====================================================
+      TEMA TOGGLE — BOTÃO LUA / SOL
+      ===================================================== */
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 5%;
+    /* alinha com a margem de 90% do body */
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--toggle-bg);
+    color: var(--toggle-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+    transform: scale(1.08);
+}
+
+.theme-toggle__icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle__icon i {
+    font-size: 1.2rem;
+}
+
+/* No tema escuro: mostra sol (para ir para claro), esconde lua */
+body.dark-theme .theme-toggle__icon--sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+body.dark-theme .theme-toggle__icon--moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+    pointer-events: none;
+}
+
+/* No tema claro: mostra lua (para ir para escuro), esconde sol */
+body.light-theme .theme-toggle__icon--sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+    pointer-events: none;
+}
+
+body.light-theme .theme-toggle__icon--moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+
+/* =====================================================
+      COMPONENTES GLOBAIS — SECTIONS
+      ===================================================== */
+.section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.section__header {
+    margin-bottom: 3.5rem;
+}
+
+/* Label pequena acima do título */
+.section__label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--label-color);
+    background: var(--label-bg);
+    border: 1px solid var(--primary-glow);
+    padding: 0.3em 0.9em;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+}
+
+/* Título principal da section */
+.section__title {
+    font-family: "Roboto Slab", serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+/* Subtítulo */
+.section__subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Destaque roxo dentro de títulos */
+.highlight {
+    color: var(--primary);
+}
+
+
+/* =====================================================
+      SECTION HABILIDADES — SKILLS
+      ===================================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* Brilho sutil no canto superior esquerdo */
+.skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, var(--primary-glow) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-hover);
+    box-shadow: 0 8px 32px var(--primary-glow);
+    background: var(--bg-card-hover);
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+/* Ícone da tecnologia */
+.skill-card__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-card__icon i {
+    font-size: 2.3rem;
+    color: var(--primary);
+}
+
+/* Nome */
+.skill-card__name {
+    font-family: "Roboto Slab", serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Descrição */
+.skill-card__desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Barra de progresso */
+.skill-card__bar {
+    height: 3px;
+    background: var(--bar-bg);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.skill-card__bar-fill {
+    height: 100%;
+    width: var(--pct);
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 100px;
+    position: relative;
+}
+
+/* Brilho pulsante na ponta da barra */
+.skill-card__bar-fill::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    box-shadow: 0 0 6px var(--primary);
+}
+
+
+/* =====================================================
+      SECTION PROJETOS
+      ===================================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    box-shadow: 0 8px 32px var(--primary-glow);
+    background: var(--bg-card-hover);
+}
+
+.project-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* Topo: tipo + links */
+.project-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.project-card__type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--label-color);
+    background: var(--label-bg);
+    padding: 0.25em 0.75em;
+    border-radius: 100px;
+}
+
+.project-card__links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-card__link {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.project-card__link i {
+    font-size: 1rem;
+}
+
+.project-card__link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--primary-glow);
+}
+
+/* Título */
+.project-card__title {
+    font-family: "Roboto Slab", serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+/* Descrição */
+.project-card__desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* Tags de tecnologia */
+.project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--tag-color);
+    background: var(--tag-bg);
+    border: 1px solid var(--primary-glow);
+    padding: 0.2em 0.7em;
+    border-radius: 6px;
+}
+
+
+/* =====================================================
+      SECTION EXPERIÊNCIAS
+      ===================================================== */
+.experience-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.exp-group {
+    margin-bottom: 3rem;
+}
+
+.exp-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Título do grupo (Profissional / Formação / Cursos) */
+.exp-group__title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: "Roboto Slab", serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 1.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.exp-group__title i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.exp-group__icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+/* Linha vertical */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+
+.timeline__item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline__item::before {
+    content: '';
+    position: absolute;
+    left: -1.82rem;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline__item:last-child {
+    margin-bottom: 0;
+}
+
+/* Ponto roxo */
+.timeline__dot {
+    position: absolute;
+    left: -1.5rem;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline__period {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+}
+
+.timeline__role {
+    font-family: "Roboto Slab", serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 0.2rem;
+}
+
+.timeline__company {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin: 0 0 0.5rem;
+}
+
+.timeline__desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Cards de curso */
+.courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.course-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.course-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+}
+
+.course-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+.course-card__badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3aaa75;
+    background: rgba(58, 170, 117, 0.1);
+    padding: 0.2em 0.65em;
+    border-radius: 100px;
+}
+
+.course-card__badge--progress {
+    color: #e8a020;
+    background: rgba(232, 160, 32, 0.1);
+}
+
+.course-card__year {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    font-weight: 600;
+}
+
+.course-card__name {
+    font-family: "Roboto Slab", serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 0.15rem;
+}
+
+.course-card__platform {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+
+/* =====================================================
+      FOOTER
+      ===================================================== */
+.footer {
+    padding: 5rem 0 3rem;
+}
+
+.footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.footer__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.footer__title {
+    font-family: "Roboto Slab", serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0.5rem 0 0;
+    line-height: 1.25;
+    max-width: 400px;
+}
+
+.footer__contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.footer__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: var(--text);
+    transition: color 0.2s ease;
+}
+
+.footer__contact-item:hover {
+    color: var(--primary);
+}
+
+.footer__contact-item i {
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.footer__contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.footer__contact-item:hover .footer__contact-icon {
+    border-color: var(--primary);
+    background: var(--primary-glow);
+}
+
+.footer__contact-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__contact-text small {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.1rem;
+}
+
+.footer__contact-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Divisor */
+.footer__divider {
+    height: 1px;
+    background: var(--border);
+}
+
+/* Rodapé inferior */
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer__thanks {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 380px;
+    margin: 0;
+}
+
+.footer__social {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.footer__social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.footer__social-link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--primary-glow);
+    transform: translateY(-2px);
+}
+
+.footer__social-link i {
+    font-size: 1rem;
+}
+
+.footer__copy {
+    font-size: 0.8rem;
+    color: var(--text-subtle);
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+
+/* =====================================================
+      RESPONSIVIDADE — TABLET (até 1024px)
+      ===================================================== */
+@media (max-width: 1024px) {
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .experience-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}
+
+
+/* =====================================================
+      RESPONSIVIDADE — TABLET (até 1024px)
+      ===================================================== */
+@media (max-width: 1024px) {
+
+    body {
+        width: 92%;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer__top {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* =====================================================
+      RESPONSIVIDADE — MOBILE (até 768px)
+      ===================================================== */
+@media (max-width: 768px) {
+
+    body {
+        width: 92%;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+        line-height: 1.3;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        margin-bottom: 1.2rem;
+    }
+
+    #header {
+        padding: 2.5em 0 1em;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 0.9rem;
+        max-width: 70%;
+        line-height: 1.4;
+    }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        top: 1rem;
+        right: 4%;
+    }
+
+    /* HERO */
+    .sobre-mim {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .sobre {
+        width: 100%;
+    }
+
+    .inf-sobre {
+        width: 100%;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .foto img {
+        width: 170px;
+        height: 170px;
+    }
+
+    /* SECTIONS */
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section__header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section__title {
+        font-size: 1.9rem;
+    }
+
+    .section__subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* CARDS */
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card,
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .skill-card__desc,
+    .project-card__desc {
+        font-size: 0.85rem;
+    }
+
+    /* EXPERIENCIA */
+    .experience-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .timeline {
+        padding-left: 1.2rem;
+    }
+
+    .timeline__item::before {
+        left: -1.5rem;
+    }
+
+    /* FOOTER MOBILE CENTRALIZADO */
+    .footer__top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer__title {
+        max-width: 100%;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .footer__contact-links {
+        width: 100%;
+        align-items: center;
+    }
+
+    .footer__contact-item {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer__bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.2rem;
+    }
+
+    .footer__thanks {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer__social {
+        justify-content: center;
+    }
+
+    .footer__copy {
+        text-align: center;
+    }
+}
+
+
+/* =====================================================
+      RESPONSIVIDADE — SMALL MOBILE (até 480px)
+      ===================================================== */
+@media (max-width: 480px) {
+
+    body {
+        width: 94%;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .logo {
+        font-size: 0.8rem;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .foto img {
+        width: 145px;
+        height: 145px;
+    }
+
+    .section__label {
+        font-size: 0.65rem;
+    }
+
+    .section__title {
+        font-size: 1.55rem;
+    }
+
+    .section__subtitle {
+        font-size: 0.88rem;
+    }
+
+    .skill-card,
+    .project-card,
+    .course-card {
+        padding: 1.2rem;
+    }
+
+    .footer__title {
+        font-size: 1.3rem;
+    }
+
+    .footer__contact-item {
+        font-size: 0.9rem;
+    }
 }

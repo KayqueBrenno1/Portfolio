@@ -4,36 +4,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Portfólio - Kayque Almeida</title>
+    <script src="./js/main.js" defer></script>
+
+    <title>Portfólio | Kayque Almeida</title>
 </head>
 
-<body>
+<body class="dark-theme">
+
+    <!-- ========================================================= -->
+    <!-- HEADER -->
+    <!-- ========================================================= -->
     <header id="header">
-        <a href="index.html" class="logo"><strong>Kayque Almeida</strong> | Desenvolvedor</a>
-        <div class="linha"></div>
+        <a href="#" class="logo"><strong>Kayque Almeida</strong> | Desenvolvedor</a>
+
+        <!-- Toggle de Tema -->
+        <button class="theme-toggle" id="themeToggle">
+            <span class="theme-toggle__icon theme-toggle__icon--sun">
+                <i class='bx bx-sun'></i>
+            </span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon">
+                <i class='bx bx-moon'></i>
+            </span>
+        </button>
     </header>
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN -->
+    <!-- ========================================================= -->
     <main id="main">
+
+        <!-- ================= HERO ================= -->
         <section class="hero">
             <div class="sobre-mim">
+
                 <div class="sobre">
-                    <h1>Olá, Eu sou o <span>Kayque</span></h1>
+                    <h1>Olá, eu sou o <span>Kayque</span></h1>
                     <p class="inf-sobre">
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                        Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced
-                        in their exact original form, accompanied by English versions from the 1914 translation by H.
-                        Rackham.
+                        Desenvolvedor focado em construir interfaces modernas, APIs funcionais e soluções web bem
+                        estruturadas.
                     </p>
                 </div>
+
                 <div class="foto">
-                    <img src="./img/foto-kayque.jpg" alt="Foto Kayque Alemeida">
+                    <img src="./img/foto-kayque.jpg" alt="Foto de Kayque Almeida">
                 </div>
+
             </div>
         </section>
-    </main>
-    <footer>
 
+
+        <!-- ========================================================= -->
+        <!-- SECTION HABILIDADES -->
+        <!-- ========================================================= -->
+        <section class="section" id="skills">
+
+            <div class="section__header">
+                <span class="section__label">Tecnologias</span>
+                <h2 class="section__title">Stacks <span class="highlight">Técnicas</span></h2>
+                <p class="section__subtitle">
+                    Ferramentas e linguagens que utilizo para desenvolver aplicações modernas, responsivas e escaláveis.
+                </p>
+            </div>
+
+            <div class="skills-grid">
+
+                <article class="skill-card" style="--pct:95%">
+                    <div class="skill-card__icon"><i class='bx bxl-html5'></i></div>
+                    <h3 class="skill-card__name">HTML5</h3>
+                    <p class="skill-card__desc">Estruturação semântica e acessível para páginas web profissionais.</p>
+                    <div class="skill-card__bar">
+                        <div class="skill-card__bar-fill"></div>
+                    </div>
+                </article>
+
+                <article class="skill-card" style="--pct:92%">
+                    <div class="skill-card__icon"><i class='bx bxl-css3'></i></div>
+                    <h3 class="skill-card__name">CSS3</h3>
+                    <p class="skill-card__desc">Layouts modernos, animações suaves, responsividade e identidade visual.
+                    </p>
+                    <div class="skill-card__bar">
+                        <div class="skill-card__bar-fill"></div>
+                    </div>
+                </article>
+
+                <article class="skill-card" style="--pct:88%">
+                    <div class="skill-card__icon"><i class='bx bxl-javascript'></i></div>
+                    <h3 class="skill-card__name">JavaScript</h3>
+                    <p class="skill-card__desc">Interatividade, manipulação de DOM e funcionalidades dinâmicas.</p>
+                    <div class="skill-card__bar">
+                        <div class="skill-card__bar-fill"></div>
+                    </div>
+                </article>
+
+                <article class="skill-card" style="--pct:85%">
+                    <div class="skill-card__icon"><i class='bx bxl-nodejs'></i></div>
+                    <h3 class="skill-card__name">Node.js</h3>
+                    <p class="skill-card__desc">Desenvolvimento back-end com APIs REST robustas e performáticas.</p>
+                    <div class="skill-card__bar">
+                        <div class="skill-card__bar-fill"></div>
+                    </div>
+                </article>
+
+                <article class="skill-card" style="--pct:82%">
+                    <div class="skill-card__icon"><i class='bx bx-data'></i></div>
+                    <h3 class="skill-card__name">MySQL / API REST</h3>
+                    <p class="skill-card__desc">Modelagem de dados, integração entre sistemas e persistência segura.</p>
+                    <div class="skill-card__bar">
+                        <div class="skill-card__bar-fill"></div>
+                    </div>
+                </article>
+
+                <article class="skill-card" style="--pct:90%">
+                    <div class="skill-card__icon"><i class='bx bxl-github'></i></div>
+                    <h3 class="skill-card__name">Git / GitHub</h3>
+                    <p class="skill-card__desc">Versionamento, colaboração e gerenciamento profissional de código.</p>
+                    <div class="skill-card__bar">
+                        <div class="skill-card__bar-fill"></div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================= -->
+        <!-- SECTION PROJETOS -->
+        <!-- ========================================================= -->
+        <section class="section" id="projects">
+
+            <div class="section__header">
+                <span class="section__label">Portfólio</span>
+                <h2 class="section__title">Projetos em <span class="highlight">Destaque</span></h2>
+                <p class="section__subtitle">
+                    Alguns dos trabalhos que demonstram minha capacidade em front-end e desenvolvimento de APIs.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card">
+                    <div class="project-card__top">
+                        <span class="project-card__type">Website</span>
+                        <div class="project-card__links">
+                            <a href="#" class="project-card__link"><i class='bx bxl-github'></i></a>
+                            <a href="#" class="project-card__link"><i class='bx bx-link-external'></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card__title">Portfólio Responsivo</h3>
+                    <p class="project-card__desc">Website pessoal com sistema dark/light mode, layout premium e alta
+                        responsividade.</p>
+                    <div class="project-card__tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-card__top">
+                        <span class="project-card__type">API</span>
+                        <div class="project-card__links">
+                            <a href="#" class="project-card__link"><i class='bx bxl-github'></i></a>
+                            <a href="#" class="project-card__link"><i class='bx bx-link-external'></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card__title">API de Filmes</h3>
+                    <p class="project-card__desc">Sistema CRUD completo com Node.js, MySQL e documentação de endpoints.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag">Node</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">REST</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-card__top">
+                        <span class="project-card__type">Website</span>
+                        <div class="project-card__links">
+                            <a href="#" class="project-card__link"><i class='bx bxl-github'></i></a>
+                            <a href="#" class="project-card__link"><i class='bx bx-link-external'></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card__title">Tela de Cadastro</h3>
+                    <p class="project-card__desc">Interface moderna de autenticação com validação visual e UX clean.</p>
+                    <div class="project-card__tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-card__top">
+                        <span class="project-card__type">API</span>
+                        <div class="project-card__links">
+                            <a href="#" class="project-card__link"><i class='bx bxl-github'></i></a>
+                            <a href="#" class="project-card__link"><i class='bx bx-link-external'></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card__title">API WhatsApp</h3>
+                    <p class="project-card__desc">Serviço de integração e disparo automatizado com documentação Postman.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag">Node</span>
+                        <span class="tag">Render</span>
+                        <span class="tag">REST</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================= -->
+        <!-- SECTION EXPERIÊNCIAS -->
+        <!-- ========================================================= -->
+        <section class="section" id="experience">
+
+            <div class="section__header">
+                <span class="section__label">Trajetória</span>
+                <h2 class="section__title">Experiência & <span class="highlight">Formação</span></h2>
+            </div>
+
+            <div class="experience-layout">
+
+                <div class="exp-group">
+                    <h3 class="exp-group__title"><i class='bx bx-briefcase'></i> Experiência Profissional</h3>
+
+                    <div class="timeline">
+                        <div class="timeline__item">
+                            <span class="timeline__period">2023 - Atual</span>
+                            <h4 class="timeline__role">Desenvolvedor Freelancer</h4>
+                            <p class="timeline__company">Projetos Web Independentes</p>
+                            <p class="timeline__desc">Criação de interfaces, landing pages, sistemas e APIs
+                                personalizadas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-group">
+                    <h3 class="exp-group__title"><i class='bx bx-book'></i> Formação / Cursos</h3>
+
+                    <div class="courses-list">
+                        <div class="course-card">
+                            <div class="course-card__header">
+                                <span class="course-card__badge">Concluído</span>
+                                <span class="course-card__year">2025</span>
+                            </div>
+                            <h4 class="course-card__name">Técnico em Desenvolvimento de Sistemas</h4>
+                            <p class="course-card__platform">SENAI</p>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-card__header">
+                                <span class="course-card__badge course-card__badge--progress">Em andamento</span>
+                                <span class="course-card__year">2026</span>
+                            </div>
+                            <h4 class="course-card__name">Análise e Desenvolvimento de Sistemas</h4>
+                            <p class="course-card__platform">Ensino Superior</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+    <footer class="footer" id="footer">
+        <div class="footer__inner">
+
+            <div class="footer__top">
+                <h2 class="footer__title">Entre em contato</h2>
+
+                <div class="footer__contact-links">
+                    <a href="#" class="footer__contact-item"><i class='bx bx-envelope'></i> kayque@email.com</a>
+                    <a href="#" class="footer__contact-item"><i class='bx bx-phone'></i> (11) 99999-9999</a>
+                </div>
+            </div>
+
+            <div class="footer__divider"></div>
+
+            <div class="footer__bottom">
+                <p class="footer__thanks">
+                    Obrigado por visitar meu portfólio. Estou sempre aberto a novas oportunidades e conexões
+                    profissionais.
+                </p>
+
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link"><i class='bx bxl-github'></i></a>
+                    <a href="#" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
+                </div>
+
+                <p class="footer__copy">© 2026 Kayque Almeida. Todos os direitos reservados.</p>
+            </div>
+
+        </div>
     </footer>
 </body>
 

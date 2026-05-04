@@ -41,8 +41,37 @@ li {
     list-style: none;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+}
+
+i {
+    line-height: 1;
+}
+
+/* ================= BASE ================= */
+p {
+    margin: 0 0 2em 0;
+}
+
 h1,
 h2,
 h3 {
-    font-family: 'Archivo Black', sans-serif;
+    color: var(--dark);
+    font-family: "Roboto Slab", serif;
+    font-weight: 700;
+    margin: 0 0 1em 0;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
 }
