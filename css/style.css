@@ -6,6 +6,12 @@
     padding: 4em 0 1em;
 }
 
+.dark-theme {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
 #header img {
     width: 130px;
     height: 100px;
@@ -895,26 +901,12 @@ body.light-theme .theme-toggle__icon--moon {
       RESPONSIVIDADE — TABLET (até 1024px)
       ===================================================== */
 @media (max-width: 1024px) {
-    
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .experience-layout {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-}
-
-
-/* =====================================================
-      RESPONSIVIDADE — TABLET (até 1024px)
-      ===================================================== */
-@media (max-width: 1024px) {
 
     body {
-        width: 92%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
     }
 
     h1 {
@@ -944,6 +936,13 @@ body.light-theme .theme-toggle__icon--moon {
       RESPONSIVIDADE — MOBILE (até 768px)
       ===================================================== */
 @media (max-width: 768px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
 
     body {
         width: 92%;
@@ -1102,6 +1101,13 @@ body.light-theme .theme-toggle__icon--moon {
       RESPONSIVIDADE — SMALL MOBILE (até 480px)
       ===================================================== */
 @media (max-width: 480px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
 
     body {
         width: 94%;
