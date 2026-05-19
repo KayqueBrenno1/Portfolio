@@ -6,6 +6,12 @@
     padding: 4em 0 1em;
 }
 
+#header img {
+    width: 130px;
+    height: 100px;
+    object-fit: contain;
+}
+
 .linha {
     height: 5px;
     width: 100%;
@@ -889,7 +895,7 @@ body.light-theme .theme-toggle__icon--moon {
       RESPONSIVIDADE — TABLET (até 1024px)
       ===================================================== */
 @media (max-width: 1024px) {
-
+    
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
